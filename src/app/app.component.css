@@ -1,0 +1,18 @@
+label{
+    line-height: 10px;
+}
+div{
+    line-height: 20px;
+    width: 300px;
+}
+.warningdiv{
+    color: red;
+}
+#classdiv{
+    float: right;
+    position: relative;
+    left: -200px;
+    top:-400px;
+    height: 300px;
+    width: 500px;
+}

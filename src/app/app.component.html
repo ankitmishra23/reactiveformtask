@@ -1,0 +1,101 @@
+<div>
+  <form [formGroup]="login" (ngSubmit)="onSubmit()" >
+    <div>
+    <label>Name</label>
+  <input type="text" placeholder="Name" name="name" formControlName="name">
+  <div *ngIf="submitform && login.controls['name'].invalid">
+  <div *ngIf="submitform && login.controls['name'].errors.required" class="warningdiv">Name is required</div></div>
+  </div>
+  <br>
+
+<div>
+    <label>Email</label>
+  <input type="email" placeholder="email" name="email" formControlName="email">
+  <div *ngIf="submitform && login.controls['email'].errors">
+    <div *ngIf="submitform && login.controls['email'].errors.required" class="warningdiv">email is required</div><div *ngIf="submitform && login.controls['email'].errors.email" class="warningdiv">enter correct email format</div></div>
+    </div>
+    <br>
+
+
+<div>
+<label>DOB</label>
+  <input type="date" placeholder="DOB" name="dob" formControlName="dob">
+  <div *ngIf="submitform && login.controls['dob'].errors">
+    <div *ngIf="submitform && login.controls['dob'].errors.required" class="warningdiv">DOB is required</div></div>
+    </div>
+    <br>
+<div>
+<label>Country</label>
+  <select name="country"  placeholder="select a country" formControlName="country">
+    <option name="country" value="selectacountry" selected>Select a country</option>
+    <option name="country"   value="India">India</option>
+    <option name="country" value="USA">USA</option>
+    <option name="country" value="Russia">Russia</option>
+  </select>
+  <div *ngIf="submitform && login.controls['country'].errors">
+    <div *ngIf="submitform && login.controls['country'].errors.required" class="warningdiv">Country is required</div></div>
+    </div>
+    <br>
+
+
+<div>
+<label>Gender</label>
+  <input type="radio" name="gender" value="male"  formControlName="gender">male
+  <input type="radio" name="gender" value="female" formControlName="gender">female
+  </div><br>
+
+
+  <div>
+<label>Martial Status</label>
+  <input type="radio" name="status" value="single"  formControlName="status">single
+  <input type="radio" name="status" value="married" formControlName="status">married
+  </div><br>
+
+
+<fieldset><legend>Street Address</legend>
+  <input type="text" placeholder="street" name="street" formControlName="street">
+  <div *ngIf="submitform && login.controls['street'].errors">
+    <div *ngIf="submitform && login.controls['street'].errors.required" class="warningdiv">street address is required</div></div>
+    </fieldset><br>
+    <fieldset>
+      <legend>Door No</legend>
+  <input type="text" placeholder="door" name="door" formControlName="door">
+  <div *ngIf="submitform && login.controls['door'].errors">
+    <div *ngIf="submitform && login.controls['door'].errors.required" class="warningdiv">door no is required</div></div>
+    </fieldset><br>
+    <fieldset>
+      <legend>Pin No</legend>
+  <input type="text" placeholder="pin" name="pin" formControlName="pin">
+  <div *ngIf="submitform && login.controls['pin'].errors">
+    <div *ngIf="submitform && login.controls['pin'].errors.required" class="warningdiv">pin is required</div>
+    <div *ngIf="submitform && login.controls['pin'].value!=6 || login.controls['pin'].touched" class="warningdiv">enter vaild pin(length 6 digits)</div>
+  </div>
+  </fieldset><br>
+  <button type="submit" [disabled]="login.pristine">Log in</button>
+
+</form>
+</div>
+
+
+<div id="classdiv"> 
+
+  <table>
+    
+    <tbody>
+     <div *ngFor="let l of adddata; let i=index">
+      <tr>
+      <td>{{l.name}}</td>
+      <td>{{l.email}}</td>
+      <td>{{l.dob}}</td>
+      <td>{{l.country}}</td>
+      <td>{{l.gender}}</td>
+      <td>{{l.status}}</td>
+        <td>{{l.street}}</td>
+        <td>{{l.door}}</td>
+        <td>{{l.pin}}</td>
+        <td><button (click)="deleterow(i)">x</button></td>
+      </tr>
+      </div>
+    </tbody>
+  </table>
+  </div>
